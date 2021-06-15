@@ -19,16 +19,16 @@ class WiFiHunter {
 }
 
 class WiFiInfoWrapper {
-  List<dynamic> _bssids;
-  List<dynamic> _ssids;
-  List<dynamic> _capabilities;
-  List<dynamic> _singalStrengths;
-  List<dynamic> _frequencies;
-  List<dynamic> _channelWidths;
+  List<dynamic> _bssids = [];
+  List<dynamic> _ssids = [];
+  List<dynamic> _capabilities = [];
+  List<dynamic> _singalStrengths = [];
+  List<dynamic> _frequencies = [];
+  List<dynamic> _channelWidths = [];
 
   WiFiInfoWrapper();
 
-  WiFiInfoWrapper.withMap(Map<dynamic, dynamic> nativeInfo) {
+  WiFiInfoWrapper.withMap(Map<dynamic, dynamic>? nativeInfo) {
     if (nativeInfo != null) {
       this._bssids = nativeInfo["BSSIDS"];
       this._ssids = nativeInfo["SSIDS"];

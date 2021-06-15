@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  WiFiInfoWrapper _wifiObject;
+  WiFiInfoWrapper? _wifiObject;
 
   @override
   void initState() {
@@ -19,8 +19,8 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  Future<WiFiInfoWrapper> scanWiFi() async {
-    WiFiInfoWrapper wifiObject;
+  Future<WiFiInfoWrapper?> scanWiFi() async {
+    WiFiInfoWrapper? wifiObject;
 
     try {
       wifiObject = await WiFiHunter.huntRequest;
@@ -32,8 +32,8 @@ class _MyAppState extends State<MyApp> {
   Future<void> scanHandler() async {
     _wifiObject = await scanWiFi();
     print("WiFi Results (SSIDs) : ");
-    for (var i = 0; i < _wifiObject.ssids.length; i++) {
-      print("- " + _wifiObject.ssids[i]);
+    for (var i = 0; i < _wifiObject!.ssids.length; i++) {
+      print("- " + _wifiObject!.ssids[i]);
     }
   }
 
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text ("Scanning... Please check Log for results..."),
-              FlatButton (
+              TextButton (
                 child: Text ("ReScan (after prev. scan is finished; await...)"),
                 onPressed: () => scanHandler(),
               )
